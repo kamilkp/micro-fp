@@ -108,4 +108,4 @@ if (typeof module !== 'undefined' && module.exports) {
   window.fp = fp;
 }
 
-}();
+})();
