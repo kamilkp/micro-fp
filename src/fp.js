@@ -71,6 +71,20 @@ const concat = curry((what, subject) => {
   return subject.concat(what);
 });
 
+const replace = curry((regex, substitute, subject) => {
+  return subject.replace(regex, substitute);
+});
+
+const match = curry((regex, subject) => {
+  return subject.match(regex);
+});
+
+const not = curry((subject) => {
+  return !subject;
+});
+
+const id = (subject) => subject;
+
 const compose = function (...args) {
   return function (subject) {
     if (args.length > 1) {
@@ -84,7 +98,7 @@ const compose = function (...args) {
 const fp = {
   filter, map, includes, includesIn, reduce,
   prop, head, tail, find, findIndex, some,
-  every, sort, concat,
+  every, sort, concat, replace, match, not, id,
   compose, curry
 };
 
