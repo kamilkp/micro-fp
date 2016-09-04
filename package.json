@@ -1,0 +1,25 @@
+{
+  "name": "micro-fp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/fp.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": ". build.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamilkp/micro-fp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kamilkp/micro-fp/issues"
+  },
+  "homepage": "https://github.com/kamilkp/micro-fp#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "uglifyjs": "^2.4.10"
+  }
+}
