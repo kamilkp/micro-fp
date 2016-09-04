@@ -80,6 +80,22 @@ var concat = curry(function (what, subject) {
   return subject.concat(what);
 });
 
+var replace = curry(function (regex, substitute, subject) {
+  return subject.replace(regex, substitute);
+});
+
+var match = curry(function (regex, subject) {
+  return subject.match(regex);
+});
+
+var not = curry(function (subject) {
+  return !subject;
+});
+
+var id = function id(subject) {
+  return subject;
+};
+
 var compose = function compose() {
   for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
     args[_key2] = arguments[_key2];
@@ -97,7 +113,7 @@ var compose = function compose() {
 var fp = {
   filter: filter, map: map, includes: includes, includesIn: includesIn, reduce: reduce,
   prop: prop, head: head, tail: tail, find: find, findIndex: findIndex, some: some,
-  every: every, sort: sort, concat: concat,
+  every: every, sort: sort, concat: concat, replace: replace, match: match, not: not, id: id,
   compose: compose, curry: curry
 };
 
