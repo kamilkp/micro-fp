@@ -24,78 +24,6 @@ var curry = function curry(fn) {
   return partial([]);
 };
 
-var filter = curry(function (fn, subject) {
-  return subject.filter(fn);
-});
-
-var map = curry(function (fn, subject) {
-  return subject.map(fn);
-});
-
-var includes = curry(function (what, subject) {
-  return subject.includes(what);
-});
-
-var includesIn = curry(function (subject, what) {
-  return subject.includes(what);
-});
-
-var reduce = curry(function (fn, seed, subject) {
-  return subject.reduce(fn, seed);
-});
-
-var prop = curry(function (property, subject) {
-  return subject[property];
-});
-
-var head = curry(function (subject) {
-  return subject[0];
-});
-
-var tail = curry(function (subject) {
-  return subject[subject.length - 1];
-});
-
-var find = curry(function (what, subject) {
-  return subject.find(what);
-});
-
-var findIndex = curry(function (what, subject) {
-  return subject.findIndex(what);
-});
-
-var some = curry(function (predicate, subject) {
-  return subject.some(predicate);
-});
-
-var every = curry(function (predicate, subject) {
-  return subject.every(predicate);
-});
-
-var sort = curry(function (sortFn, subject) {
-  return subject.sort(sortFn);
-});
-
-var concat = curry(function (what, subject) {
-  return subject.concat(what);
-});
-
-var replace = curry(function (regex, substitute, subject) {
-  return subject.replace(regex, substitute);
-});
-
-var match = curry(function (regex, subject) {
-  return subject.match(regex);
-});
-
-var not = curry(function (subject) {
-  return !subject;
-});
-
-var id = function id(subject) {
-  return subject;
-};
-
 var compose = function compose() {
   for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
     args[_key2] = arguments[_key2];
@@ -110,12 +38,52 @@ var compose = function compose() {
   };
 };
 
-var fp = {
-  filter: filter, map: map, includes: includes, includesIn: includesIn, reduce: reduce,
-  prop: prop, head: head, tail: tail, find: find, findIndex: findIndex, some: some,
-  every: every, sort: sort, concat: concat, replace: replace, match: match, not: not, id: id,
-  compose: compose, curry: curry
+var not = curry(function (subject) {
+  return !subject;
+});
+
+var id = function id(subject) {
+  return subject;
 };
+
+var includesIn = curry(function (subject, what) {
+  return subject.includes(what);
+});
+
+var reduce = curry(function (fn, seed, subject) {
+  return subject.reduce(fn, seed);
+});
+
+var head = curry(function (subject) {
+  return subject[0];
+});
+
+var tail = curry(function (subject) {
+  return subject[subject.length - 1];
+});
+
+var replace = curry(function (regex, substitute, subject) {
+  return subject.replace(regex, substitute);
+});
+
+var prop = curry(function (property, subject) {
+  return subject[property];
+});
+
+var keys = curry(function (subject) {
+  return Object.keys(subject);
+});
+
+var fp = {
+  compose: compose, curry: curry, not: not, id: id, prop: prop, keys: keys,
+  includesIn: includesIn, reduce: reduce, head: head, tail: tail, replace: replace
+};
+
+['filter', 'map', 'includes', 'find', 'findIndex', 'some', 'every', 'concat', 'sort', 'match', 'split', 'join'].forEach(function (fn) {
+  fp[fn] = curry(function (b, a) {
+    return a[fn](b);
+  });
+});
 
 if (typeof module !== 'undefined' && module.exports) {
   // window.fp = fp;
