@@ -64,10 +64,6 @@ const keys = curry((subject) => {
   return Object.keys(subject);
 });
 
-const values = curry((subject) => {
-  return compose(map(propOf(subject)), keys);
-});
-
 const eq = curry((what, subject) => {
   return what === subject;
 });
@@ -90,6 +86,12 @@ const fp = {
     return a[fn](b);
   });
 });
+
+const values = curry((subject) => {
+  return compose(map(propOf(subject)), keys);
+});
+
+fp.values = values;
 
 if (typeof module !== 'undefined' && module.exports) {
   // window.fp = fp;
