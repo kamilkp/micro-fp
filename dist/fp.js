@@ -79,7 +79,7 @@ var keys = curry(function (subject) {
 });
 
 var values = curry(function (subject) {
-  return keys(propOf(subject));
+  return compose(map(propOf(subject)), keys);
 });
 
 var eq = curry(function (what, subject) {

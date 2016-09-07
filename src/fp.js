@@ -65,7 +65,7 @@ const keys = curry((subject) => {
 });
 
 const values = curry((subject) => {
-  return keys(propOf(subject));
+  return compose(map(propOf(subject)), keys);
 });
 
 const eq = curry((what, subject) => {
