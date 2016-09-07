@@ -88,7 +88,7 @@ const fp = {
 });
 
 const values = curry((subject) => {
-  return compose(fp.map(propOf(subject)), keys);
+  return compose(fp.map(propOf(subject)), keys)(subject);
 });
 
 fp.values = values;
