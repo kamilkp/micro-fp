@@ -70,13 +70,29 @@ var prop = curry(function (property, subject) {
   return subject[property];
 });
 
+var propOf = curry(function (subject, property) {
+  return subject[property];
+});
+
 var keys = curry(function (subject) {
   return Object.keys(subject);
 });
 
+var values = curry(function (subject) {
+  return keys(propOf(subject));
+});
+
+var eq = curry(function (what, subject) {
+  return what === subject;
+});
+
+var neq = curry(function (what, subject) {
+  return what !== subject;
+});
+
 var fp = {
-  compose: compose, curry: curry, not: not, id: id, prop: prop, keys: keys,
-  includesIn: includesIn, reduce: reduce, head: head, tail: tail, replace: replace
+  compose: compose, curry: curry, not: not, id: id, prop: prop, propOf: propOf, keys: keys, values: values,
+  eq: eq, neq: neq, includesIn: includesIn, reduce: reduce, head: head, tail: tail, replace: replace
 };
 
 ['filter', 'map', 'includes', 'find', 'findIndex', 'some', 'every', 'concat', 'sort', 'match', 'split', 'join'].forEach(function (fn) {

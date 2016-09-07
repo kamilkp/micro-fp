@@ -56,13 +56,29 @@ const prop = curry((property, subject) => {
   return subject[property];
 });
 
+const propOf = curry((subject, property) => {
+  return subject[property];
+});
+
 const keys = curry((subject) => {
   return Object.keys(subject);
 });
 
+const values = curry((subject) => {
+  return keys(propOf(subject));
+});
+
+const eq = curry((what, subject) => {
+  return what === subject;
+});
+
+const neq = curry((what, subject) => {
+  return what !== subject;
+});
+
 const fp = {
-  compose, curry, not, id, prop, keys,
-  includesIn, reduce, head, tail, replace
+  compose, curry, not, id, prop, propOf, keys, values,
+  eq, neq, includesIn, reduce, head, tail, replace
 };
 
 [
