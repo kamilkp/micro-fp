@@ -98,7 +98,7 @@ var fp = {
 });
 
 var values = curry(function (subject) {
-  return compose(map(propOf(subject)), keys);
+  return compose(fp.map(propOf(subject)), keys);
 });
 
 fp.values = values;
