@@ -78,10 +78,6 @@ var keys = curry(function (subject) {
   return Object.keys(subject);
 });
 
-var values = curry(function (subject) {
-  return compose(map(propOf(subject)), keys);
-});
-
 var eq = curry(function (what, subject) {
   return what === subject;
 });
@@ -100,6 +96,12 @@ var fp = {
     return a[fn](b);
   });
 });
+
+var values = curry(function (subject) {
+  return compose(map(propOf(subject)), keys);
+});
+
+fp.values = values;
 
 if (typeof module !== 'undefined' && module.exports) {
   // window.fp = fp;
