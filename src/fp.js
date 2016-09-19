@@ -73,7 +73,7 @@ const neq = curry((what, subject) => {
 });
 
 const fp = {
-  compose, curry, not, id, prop, propOf, keys, values,
+  compose, curry, not, id, prop, propOf, keys,
   eq, neq, includesIn, reduce, head, tail, replace
 };
 

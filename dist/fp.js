@@ -87,7 +87,7 @@ var neq = curry(function (what, subject) {
 });
 
 var fp = {
-  compose: compose, curry: curry, not: not, id: id, prop: prop, propOf: propOf, keys: keys, values: values,
+  compose: compose, curry: curry, not: not, id: id, prop: prop, propOf: propOf, keys: keys,
   eq: eq, neq: neq, includesIn: includesIn, reduce: reduce, head: head, tail: tail, replace: replace
 };
 
