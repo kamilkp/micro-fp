@@ -86,9 +86,34 @@ var neq = curry(function (what, subject) {
   return what !== subject;
 });
 
+var and = function and() {
+  for (var _len3 = arguments.length, fns = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+    fns[_key3] = arguments[_key3];
+  }
+
+  return function (value) {
+    return fns.every(function (fn) {
+      return typeof fn === 'function' ? fn(value) : fn;
+    });
+  };
+};
+
+var or = function or() {
+  for (var _len4 = arguments.length, fns = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+    fns[_key4] = arguments[_key4];
+  }
+
+  return function (value) {
+    return fns.some(function (fn) {
+      return typeof fn === 'function' ? fn(value) : fn;
+    });
+  };
+};
+
 var fp = {
   compose: compose, curry: curry, not: not, id: id, prop: prop, propOf: propOf, keys: keys,
-  eq: eq, neq: neq, includesIn: includesIn, reduce: reduce, head: head, tail: tail, replace: replace
+  eq: eq, neq: neq, includesIn: includesIn, reduce: reduce, head: head, tail: tail, replace: replace,
+  and: and, or: or
 };
 
 ['filter', 'map', 'includes', 'find', 'findIndex', 'some', 'every', 'concat', 'sort', 'match', 'split', 'join'].forEach(function (fn) {
