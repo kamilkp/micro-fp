@@ -72,9 +72,16 @@ const neq = curry((what, subject) => {
   return what !== subject;
 });
 
+const and = (...fns) =>
+  value => fns.every(fn => typeof fn === 'function' ? fn(value) : fn);
+
+const or = (...fns) =>
+  value => fns.some(fn => typeof fn === 'function' ? fn(value) : fn);
+
 const fp = {
   compose, curry, not, id, prop, propOf, keys,
-  eq, neq, includesIn, reduce, head, tail, replace
+  eq, neq, includesIn, reduce, head, tail, replace,
+  and, or
 };
 
 [
